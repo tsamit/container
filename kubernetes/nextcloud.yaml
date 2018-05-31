@@ -7,16 +7,16 @@ metadata:
 spec:
   containers:
     - name: nextcloud
-      image: sameersbn/nextcloud:9.0.55
+      image: nextcloud
       args: ["app:nextcloud"]
       env:
         - name: TZ
-          value: Asia/Kolkata
+          value: Asia/Bangkok
         - name: DEBUG
           value: "false"
 
         - name: NEXTCLOUD_URL
-          value: http://cloud.example.com
+          value: http://cloud.jasmine.com
 
         - name: NEXTCLOUD_ADMIN_USER
           value: admin
@@ -31,22 +31,22 @@ spec:
         - name: DB_TYPE
           value: pgsql
         - name: DB_HOST
-          value: postgresql
+          value: 10.2.0.130
         - name: DB_PORT
           value: "5432"
         - name: DB_USER
           value: nextcloud
         - name: DB_PASS
-          value: password
+          value: 4awefa3
         - name: DB_NAME
-          value: nextcloud_db
+          value: nextcloud
 
       ports:
         - name: php-fpm
           containerPort: 9000
           protocol: TCP
       volumeMounts:
-        - mountPath: /var/lib/nextcloud
+        - mountPath: /mnt/ceph_storage/data
           name: data
       livenessProbe:
         tcpSocket:
